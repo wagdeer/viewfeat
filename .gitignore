@@ -1,0 +1,97 @@
+# Local review notes. Kept on disk, not versioned.
+docs/
+
+# Build / CMake
+build/
+cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+compile_commands.json
+install_manifest.txt
+Testing/
+CTestTestfile.cmake
+_deps/
+
+# Compiled objects / libraries / binaries
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.so.*
+*.dylib
+*.dll
+*.exe
+*.out
+*.d
+
+# Third-party build artifacts
+3rdparty/**/lib/
+3rdparty/**/bin/
+
+# Model weights and TensorRT engines (export locally, do not commit)
+weights/
+*.onnx
+*.engine
+*.plan
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+*.trt
+
+# Inference / demo outputs
+example/output/
+# image/*_matches/
+# image/*_output/
+# **/match_image.png
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+.Python
+.venv/
+venv/
+env/
+.env
+.env.*
+*.egg-info/
+.eggs/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.ipynb_checkpoints/
+
+# Logs / dumps / temp
+*.log
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+core
+core.*
+*.stackdump
+
+# IDE / editor
+.vscode/
+.idea/
+*.code-workspace
+.cursor/
+*.sublime-project
+*.sublime-workspace
+
+# OS
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+Desktop.ini
+
+# CUDA / TensorRT cache
+*.timing
+.nv/

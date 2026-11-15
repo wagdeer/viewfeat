@@ -1,0 +1,17 @@
+---
+description: 改 viewfeat 时如何编译、用 GPU 测试、更新审查清单并提交
+alwaysApply: true
+---
+
+# 做完一条审查之后
+
+`docs/README.md` 的「先看这些」是当前工作清单。做完一条就把它挪到「已经做了」，改表格里的开放计数，并在对应审查条目下写「状态：已落地」。不要等用户再问文档改了没有。
+
+测试在镜像 `visual-localization-trt:blackwell-20261114` 里跑，必须加 `--gpus all`。主机有 RTX 5070 Ti。不加 `--gpus` 时容器看不到显卡，不能把图像测试说成跳过。进容器后先确认 `nvidia-smi -L` 列出这块卡，再跑完整 ctest：`engine_io`、`engine_io_garbage`、`config_load`、`example_superpoint`、`example_aliked`、`example_cosplace`、`example_flexglue`。只跑不碰 GPU 的测试不算测完。
+
+```bash
+docker run --rm --gpus all -v "$PWD":/src -w /src visual-localization-trt:blackwell-20261114 \
+  bash -lc 'nvidia-smi -L && cmake -S /src -B /tmp/viewfeat-build -G Ninja -DBUILD_TESTING=ON && cmake --build /tmp/viewfeat-build && ctest --test-dir /tmp/viewfeat-build --output-on-failure -j1'
+```
+
+测试通过后提交代码和 `docs/` 的清单更新。不要提交 `weights/`、`*.engine`、`example/output/`。

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>viewfeat</name>
+  <version>0.1.0</version>
+  <description>
+    TensorRT runtime for SuperPoint / ALIKED + LightGlue and CosPlace.
+    Requires TensorRT and CUDA at build and run time.
+  </description>
+  <maintainer email="37934019+wagdeer@users.noreply.github.com">wagdeer</maintainer>
+  <license>Apache-2.0</license>
+
+  <buildtool_depend>cmake</buildtool_depend>
+
+  <depend>eigen</depend>
+  <depend>libopencv-dev</depend>
+  <depend>yaml-cpp</depend>
+
+  <export>
+    <build_type>cmake</build_type>
+  </export>
+</package>
